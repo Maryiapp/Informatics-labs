@@ -1,31 +1,142 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab02", "Lab02\Lab02.vcxproj", "{DB86A2BC-2430-41EB-8911-E318A6D79B35}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Debug|x64.ActiveCfg = Debug|x64
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Debug|x64.Build.0 = Debug|x64
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Debug|x86.ActiveCfg = Debug|Win32
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Debug|x86.Build.0 = Debug|Win32
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Release|x64.ActiveCfg = Release|x64
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Release|x64.Build.0 = Release|x64
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Release|x86.ActiveCfg = Release|Win32
-		{DB86A2BC-2430-41EB-8911-E318A6D79B35}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2AAA2C2E-CFA5-469C-A2FD-7F5FC7032358}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+// --------------------------------------------------------------
+// TASK 1: Numerical Precision and Type Casting
+// --------------------------------------------------------------
+// 1. Print the value of 0.1 with default precision and with setprecision(30).
+// 2. Print results of integer division and floating-point division of two numbers (e.g., 7 and 3).
+// 3. Explain the difference in output and why it happens.
+// 4. Demonstrate casting int to double before division.
+
+
+// --------------------------------------------------------------
+// TASK 2: Conditional Statements and Operators
+// --------------------------------------------------------------
+// 1. Ask the user for an integer number.
+// 2. Check whether the number is even or odd using modulo (%).
+// 3. Use the ternary operator to compute the absolute value of the number (without using std::abs).
+// 4. Print both results (even/odd and absolute value).
+
+
+// --------------------------------------------------------------
+// TASK 3: Loops and Increment Operators
+// --------------------------------------------------------------
+// 1. Using a while loop, print numbers from 5 down to 1.
+// 2. Using a do-while loop, print numbers from 1 to 5.
+// 3. Using a for loop, print even numbers from 0 to 10.
+// 4. In each loop, demonstrate difference between pre-increment (++i) and post-increment (i++).
+
+
+// --------------------------------------------------------------
+// TASK 4: Working with Loops
+// --------------------------------------------------------------
+// 1. Write a program that sums numbers from 1 to 100 using a for loop.
+// 2. Write a while loop that reads numbers from the user until the user enters 0.
+//    For each number, print whether it is positive or negative.
+// 3. Write a for loop that prints the first 10 squares (1, 4, 9, ...).
+// 4. Use nested loops to print a simple rectangle made of '*' characters
+//    (for example, 4 rows and 6 columns).
+
+
+// --------------------------------------------------------------
+// Note: Each task should be implemented in a separate code block
+// within the main() function. Use clear output formatting
+// (e.g., "TASK 1 OUTPUT:" before each task’s results).
+// --------------------------------------------------------------
+
+
+int main()
+{
+    // task 1
+    cout << "TASK 1\n";
+    double x = 0.1;
+    cout << "Default precision: " << x << endl;
+    cout << "Precision 30: " << setprecision(30) << x << endl;
+    int a = 7, b = 3;
+    cout << "\nInteger division 7 / 3 = " << a / b << endl;
+    cout << "Floating-point division 7.0 / 3 = " << 7.0 / 3 << endl;
+    cout << "Casting int to double: (double)7 / 3 = " << (double)a / b << endl;
+
+
+    // task 2
+    cout << "TASK 2\n";
+    int num;
+    cout << "Enter an integer: ";
+    cin >> num;
+
+    if (num % 2 == 0)
+        cout << "The number is even.\n";
+    else
+        cout << "The number is odd.\n";
+
+    int absValue = (num < 0) ? -num : num;
+    cout << "Absolute value: " << absValue << "\n\n" << endl;
+
+
+    // task 3
+    cout << "TASK 3\n";
+    int i = 5;
+    cout << "While loop (5 to 1): ";
+    while (i >= 1)
+    {
+        cout << i-- << " ";
+    }
+    cout << endl;
+    i = 1;
+    cout << "Do-while loop (1 to 5): ";
+    do
+    {
+        cout << i++ << " ";
+    } while (i <= 5);
+    cout << endl;
+
+    cout << "For loop (even numbers 0 to 10): ";
+    for (int j = 0; j <= 10; ++j)
+    {
+        if (j % 2 == 0)
+            cout << j << " ";
+    }
+    cout << "\n\n";
+
+
+
+    // task 4
+    cout << "TASK 4\n";
+
+    int sum = 0;
+    for (int k = 1; k <= 100; k++)
+        sum += k;
+    cout << "Sum from 1 to 100: " << sum << endl;
+
+    int n;
+    cout << "Enter numbers (0 to stop):\n";
+    while (true)
+    {
+        cin >> n;
+        if (n == 0)
+            break;
+
+        if (n > 0)
+            cout << "Positive\n";
+        else
+            cout << "Negative\n";
+    }
+    cout << "First 10 squares:\n";
+    for (int k = 1; k <= 10; k++)
+        cout << k * k << " ";
+    cout << endl;
+
+    cout << "\nRectangle (4x6):\n";
+    for (int r = 0; r < 4; r++)
+    {
+        for (int c = 0; c < 6; c++)
+            cout << "*";
+        cout << endl;
+    }
+
+    return 0;
+}
+
