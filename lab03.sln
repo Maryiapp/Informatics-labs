@@ -1,31 +1,182 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab03", "lab03\lab03.vcxproj", "{A1065D0E-0841-4372-9EC5-EEA93DB276A5}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Debug|x64.ActiveCfg = Debug|x64
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Debug|x64.Build.0 = Debug|x64
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Debug|x86.ActiveCfg = Debug|Win32
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Debug|x86.Build.0 = Debug|Win32
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Release|x64.ActiveCfg = Release|x64
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Release|x64.Build.0 = Release|x64
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Release|x86.ActiveCfg = Release|Win32
-		{A1065D0E-0841-4372-9EC5-EEA93DB276A5}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AB6D1FB6-7980-4719-AAF6-6565876ED9FE}
-	EndGlobalSection
-EndGlobal
+#include <iostream>
+#include <cmath>
+
+int main()
+{
+    // ---------------------------------------------------------
+    // TASK 1: Dice Simulation with switch statement
+    //
+    // Write a program that:
+    //  - Asks the user to enter a number between 1 and 6.
+    //  - Uses a switch statement to print that many stars (*).
+    //  - If the number is outside the range, print "Invalid input".
+    //
+    // Example:
+    //   Input: 4
+    //   Output: ****
+    //
+    // Hint: use "break" after each case.
+    // ---------------------------------------------------------
+
+    int dice;
+    std::cin >> dice;
+
+    switch (dice)
+    {
+    case 1: std::cout << "*"; break;
+    case 2: std::cout << "**"; break;
+    case 3: std::cout << "***"; break;
+    case 4: std::cout << "****"; break;
+    case 5: std::cout << "*****"; break;
+    case 6: std::cout << "******"; break;
+    default: std::cout << "Invalid input";
+    }
+
+    std::cout << "\n\n";
+
+
+
+    // ---------------------------------------------------------
+    // TASK 2: Array Initialization and Printing
+    //
+    // Create an integer array of size 10.
+    //  - Initialize the array so that each element equals its index * 2.
+    //  - Print the array in one line, separated by spaces.
+    //
+    // Example output:
+    //   0 2 4 6 8 10 12 14 16 18
+    //
+    // Hint: use a for loop and array indexing.
+    // ---------------------------------------------------------
+
+    int arr[10];
+    for (int i = 0; i < 10; i++)
+        arr[i] = i * 2;
+
+    for (int i = 0; i < 10; i++)
+        std::cout << arr[i] << " ";
+
+    std::cout << "\n\n";
+
+
+
+
+    // ---------------------------------------------------------
+    // TASK 3: Average of Numbers
+    //
+    // Create an array of 5 doubles.
+    //  - Ask the user to enter 5 numbers.
+    //  - Compute and print the average value.
+    //
+    // Example:
+    //   Input: 5 10 15 20 25
+    //   Output: Average = 15
+    //
+    // Hint: Use a variable to store the running sum.
+    // ---------------------------------------------------------
+
+    double nums[5];
+    double sum = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        std::cin >> nums[i];
+        sum += nums[i];
+    }
+
+    std::cout << "Average = " << sum / 5 << "\n\n";
+
+
+
+
+
+    // ---------------------------------------------------------
+    // TASK 4: Reverse an Array
+    //
+    // Using an integer array of size 6 (with values 1 to 6):
+    //  - Reverse the order of the elements (in-place).
+    //  - Print the array before and after reversing.
+    //
+    // Example:
+    //   Before: 1 2 3 4 5 6
+    //   After:  6 5 4 3 2 1
+    //
+    // Hint: use a while loop and swap elements.
+    // ---------------------------------------------------------
+
+    int rev[6] = { 1, 2, 3, 4, 5, 6 };
+
+    std::cout << "Before: ";
+    for (int i = 0; i < 6; i++)
+        std::cout << rev[i] << " ";
+
+    int left = 0, right = 5;
+    while (left < right)
+    {
+        int temp = rev[left];
+        rev[left] = rev[right];
+        rev[right] = temp;
+        left++;
+        right--;
+    }
+
+    std::cout << "\nAfter:  ";
+    for (int i = 0; i < 6; i++)
+        std::cout << rev[i] << " ";
+
+    std::cout << "\n\n";
+
+
+
+
+
+    // ---------------------------------------------------------
+    // TASK 5: 2D Array – Spiral Filling
+    //
+    // Create a 2D array with 4 rows and 4 columns.
+    // Fill it with numbers 0, 1, 2, ... in a spiral order
+    // (from the outside towards the center).
+    //
+    // Example (4x4):
+    //   0   1   2   3
+    //  11  12  13   4
+    //  10  15  14   5
+    //   9   8   7   6
+    //
+    // Hint:
+    //   - Use variables for top, bottom, left, right boundaries.
+    //   - Decrease the boundaries as you fill the array.
+    // ---------------------------------------------------------
+
+    int m[4][4];
+    int top = 0, bottom = 3, left2 = 0, right2 = 3;
+    int value = 0;
+
+    while (top <= bottom && left2 <= right2)
+    {
+        for (int i = left2; i <= right2; i++)
+            m[top][i] = value++;
+        top++;
+
+        for (int i = top; i <= bottom; i++)
+            m[i][right2] = value++;
+        right2--;
+
+        for (int i = right2; i >= left2; i--)
+            m[bottom][i] = value++;
+        bottom--;
+
+        for (int i = bottom; i >= top; i--)
+            m[i][left2] = value++;
+        left2++;
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+            std::cout << m[i][j] << "\t";
+        std::cout << "\n";
+    }
+
+    return 0;
+}
